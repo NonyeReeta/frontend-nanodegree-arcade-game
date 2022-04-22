@@ -43,13 +43,31 @@ Enemy.prototype.render = function () {
 let Player = function (x, y) {
   this.x = x;
   this.y = y;
-  this.player = "images/char-boy.png";
+  this.player = "images/char-cat-girl.png";
 };
 
 Player.prototype.update = function (dt) {};
 
 Player.prototype.render = function () {
   ctx.drawImage(Resources.get(this.player), this.x, this.y);
+};
+
+// selecting the score element
+let scoreBoard = document.querySelector("p");
+let score = 0;
+let currentScore = `Score: ${score}`;
+scoreBoard.innerHTML = currentScore;
+
+// function to increase score
+const increaseScore = function () {
+  score++;
+  scoreBoard.textContent = `Score: ${score}`;
+};
+
+// function to decrease score after collision
+const decreaseScore = function () {
+  score--;
+  scoreBoard.textContent = `Score: ${score}`;
 };
 
 Player.prototype.handleInput = function (keyPress) {
@@ -65,10 +83,11 @@ Player.prototype.handleInput = function (keyPress) {
   if (keyPress == "right" && this.x < 405) {
     this.x += 102;
   }
-  if (this.y > 0) {
+  if (this.y < 0) {
     setTimeout(function () {
+      increaseScore();
       player.x = 202;
-      player.y = 405;
+      player.y = 410;
     }, 500);
   }
 };
@@ -76,15 +95,13 @@ Player.prototype.handleInput = function (keyPress) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
-let enemyLoc = [63, 147, 230];
+let enemyLoc = [65, 145, 230];
 
 enemyLoc.forEach(function (locY) {
-  const enemy = new Enemy(50, locY, 200);
-  console.log(enemy);
-
+  const enemy = new Enemy(0, locY, 200);
   allEnemies.push(enemy);
 });
-let player = new Player(202, 405);
+let player = new Player(205, 410);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener("keyup", function (e) {
