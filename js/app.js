@@ -1,16 +1,14 @@
 // Enemies our player must avoid
-class Enemy {
-  function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = "images/enemy-bug.png";
-  }
-}
+let Enemy = function (x, y, speed) {
+  // Variables applied to each of our instances go here,
+  // we've provided one for you to get started
+  this.x = x;
+  this.y = y;
+  this.speed = speed;
+  // The image/sprite for our enemies, this uses
+  // a helper we've provided to easily load images
+  this.sprite = "images/enemy-bug.png";
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -36,20 +34,17 @@ Enemy.prototype.update = function (dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
-  console.log(typeof this.sprite);
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-class Player {
-  function(x, y) {
-    this.x = x;
-    this.y = y;
-    this.player = "images/char-boy.png";
-  }
-}
+let Player = function (x, y) {
+  this.x = x;
+  this.y = y;
+  this.player = "images/char-boy.png";
+};
 
 Player.prototype.update = function (dt) {};
 
@@ -84,8 +79,9 @@ let allEnemies = [];
 let enemyLoc = [63, 147, 230];
 
 enemyLoc.forEach(function (locY) {
-  const enemy = new Enemy(0, locY, 200);
+  const enemy = new Enemy(50, locY, 200);
   console.log(enemy);
+
   allEnemies.push(enemy);
 });
 let player = new Player(202, 405);
