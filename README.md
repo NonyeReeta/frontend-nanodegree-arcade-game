@@ -8,4 +8,4 @@ Open index.html in your browser.
 
 ## How To Play
 
-Use the arrow keys to move in different dirrections.
+Use the arrow keys to move in different directions.
