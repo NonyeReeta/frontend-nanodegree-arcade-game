@@ -4,7 +4,8 @@ The objective of the game is to get to the water while avoiding collision with t
 
 ## Instructions
 
-Open index.html in your browser.
+Open _index.html_ in your browser.
+You get 1 point when you get to the water and your score is decreased by 1 when there is a collision with a bug.
 
 ## How To Play
 

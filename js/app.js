@@ -53,23 +53,23 @@ class Player {
   }
   handleInput(keyPress) {
     if (keyPress == "up" && this.y > 0) {
-      this.y -= 83;
+      this.y -= 85;
     }
     if (keyPress == "down" && this.y < 405) {
-      this.y += 83;
+      this.y += 85;
     }
     if (keyPress == "left" && this.x > 0) {
-      this.x -= 102;
+      this.x -= 105;
     }
     if (keyPress == "right" && this.x < 405) {
-      this.x += 102;
+      this.x += 105;
     }
     if (this.y < 0) {
       setTimeout(function () {
         increaseScore();
         player.x = 205;
         player.y = 410;
-      }, 500);
+      }, 50);
     }
   }
 }
